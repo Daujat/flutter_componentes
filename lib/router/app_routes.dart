@@ -12,6 +12,8 @@ class AppRoutes {
     MenuOption(route: 'card', icon: Icons.card_membership_rounded, name: 'CardScreen', screen: const CardScreen()),
     MenuOption(route: 'alert', icon: Icons.bus_alert, name: 'AlertScreen', screen: const AlertScreen()),
     MenuOption(route: 'login_cafe', icon: Icons.coffee, name: 'LoginCafe', screen: const LoginCafeScreen()),
+    MenuOption(route: 'avatar', icon: Icons.all_inclusive_sharp, name: 'AvatarScreen', screen: const AvatarScreen()),
+    MenuOption(route: 'animated', icon: Icons.animation_outlined, name: 'AnimatedScreen', screen: const AnimatedScreen()),
   ];
 
   static Map<String, Widget Function(BuildContext)> getAppRoutes() {

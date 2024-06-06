@@ -1,11 +1,39 @@
+import 'dart:io';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AlertScreen extends StatelessWidget {
    
   const AlertScreen({super.key});
 
+  //Metodo de accion de dispostivo ios
+  void displayDialogiIOS(BuildContext context) {
+    showCupertinoDialog(
+      context: context,
+      builder: (context) {
+          return CupertinoAlertDialog(
+             title: const Text('Alert Dialog!'),
+             content:  const Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text('¡Esto es el contenido interno de la alerta!'),
+                SizedBox(height: 10),
+                FlutterLogo(size: 100)
+              ],
+             ),
+             actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: const Text('Aceptar')
+              ),
+             ],
+          );  
+        }
+      );
+  }
+
   //Método de Acción
-  void displayDialog(BuildContext context) {
+  void displayDialogAndroid(BuildContext context) {
     showDialog(
       context: context,
       builder: (context) => const AlertDialog(
@@ -36,8 +64,9 @@ class AlertScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-         child: ElevatedButton(
-          onPressed: () => displayDialog(context),
+         child: ElevatedButton
+         (onPressed: () => Platform.isAndroid ?
+         displayDialogAndroid(context): displayDialogiIOS(context),
           child: const Padding(
             padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
             child: Text(
